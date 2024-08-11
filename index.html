@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8D3BBNGXC9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8D3BBNGXC9');
+  </script>
+
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .video-carousel {
+      width: 90%; /* Adjust as needed */
+      height: 200px; /* Adjust as needed */
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+      margin-left: 5%; /* Add space on the left side */
+      font-size: 0;
+  }
+
+  .video-carousel-end {
+      width: 90%; /* Adjust as needed */
+      height: 200px; /* Adjust as needed */
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+      margin-left: 5%; /* Add space on the left side */
+      font-size: 0;
+  }
+  
+    .video-slide {
+      width: 210px; /* 1/5 of the container */
+      height: 100%;
+      margin: 0;
+      padding: 0;
+  
+  }
+
+  .video-slide-end {
+      width: 210px; /* 1/5 of the container */
+      height: 100%;
+      margin: 0;
+      padding: 0;
+  
+  }
+
+    .teaser-image {
+      /* up space */
+      display: block; /* Ensures image takes up full width of its container */
+      max-width: 100%; /* Ensures image doesn't exceed its container width */
+      height: auto; /* Preserves aspect ratio of the image */
+  }
+
+
+  
+  @keyframes slide {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+
+  
+
+
+  </style>
+
+  <title>BoT</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <!-- <link rel="icon" href="./static/images/favicon.svg"> -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+</head>
+<body>
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-2 publication-title">Body Transformer: Leveraging <br> Robot Embodiment for Policy Learning</h1>
+
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- </div> -->
+<script src="./static/js/rolling-video.js"></script>
+<script src="./static/js/rolling-video-end.js"></script>
+<section class="hero is-light">
+  <br>
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column" style="padding: 0 40px;">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            In recent years, the transformer architecture has become the de facto standard for machine learning algorithms applied to natural language processing and computer vision. Despite notable evidence of successful deployment of this architecture in the context of robot learning, we claim that vanilla transformers do not fully exploit the structure of the robot learning problem. Therefore, we propose Body Transformer (BoT), an architecture that leverages the robot embodiment by providing an inductive bias that guides the learning process. We represent the robot body as a graph of sensors and actuators, and rely on masked attention to pool information throughout the architecture. The resulting architecture outperforms the vanilla transformer, as well as the classical multilayer perceptron, in terms of task completion, scaling properties, and computational efficiency when representing either imitation or reinforcement learning policies.
+          </p><br>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section has-text-justified">
+  <div class="container is-max-desktop">
+    <!--/ Method. -->
+    <div class="columns is-centered">
+      <div class="column">
+        <h2 class="title is-3">Body Transformer</h2>
+      </div>
+    </div>
+    <div class="video_grid_item">
+      <video class="grid-video training" autoplay loop playsinline width="100%" controls>
+        <source src="./static/videos/summary.mp4" type="video/mp4">
+      </video>
+    </div>
+    Robot learning policies that employ the vanilla transformer architecture as a backbone typically neglect the useful information provided by the embodiment structure. In contrast, we leverage this structure to provide a stronger inductive bias to transformers, while retaining the representation power of the original architecture. Specifically, BoT is based on masked attention, where at each layer in the resulting architecture, a node can only attend to information from itself and its direct neighbors. As a result, information flows according to the graph structure, with the upstream layers reasoning according to local information and the downstream layers pooling more global information from the farther nodes.
+    <div>
+      <img src="./static/images/teaser.jpg" alt="teaser" class="teaser-image" style="width: 100%">
+    </div>
+    We map the observation and action vectors to a graph of local observations and actions through linear tokenizers and detokenizers. Then, we propose two alternatives for the backbone of our architecture:
+    <ul style="list-style-type:disc" margin-above: 10px>
+      <li><em>BoT-Hard</em>, which masks every layer with a binary mask that reflects the structure of the graph. Concretely, this mask only allows each node to attend to itself and its direct neighbors, introducing considerable sparsity in the problem.</li>
+      <li><em>BoT-Mix</em>, which interleaves layers with masked attention (constructed as in BoT-Hard) with layers with unmasked attention. </li>
+    </ul>
+    <hr>
+    <div class="columns is-centered">
+      <div class="column">
+        <h2 class="title is-3">Results</h2>
+      </div>
+    </div>
+    <p>
+    Our experiments show how BoT benefits both imitation and reinforcement learning algorithms.
+    </p>
+    <br>
+    <div class="video_grid">
+      <div class="columns is-multiline">
+        <div class="column is-3">
+          <div class="video_grid_item">
+            <video class="grid-video training" autoplay muted loop playsinline height="35%">
+              <source src="./static/videos/video1.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+        <div class="column is-3">
+          <div class="video_grid_item">
+            <video class="grid-video training" autoplay muted loop playsinline height="25%">
+              <source src="./static/videos/video2.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+        <div class="column is-3">
+          <div class="video_grid_item">
+            <video class="grid-video training" autoplay muted loop playsinline height="25%">
+              <source src="./static/videos/video3.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+        <div class="column is-3">
+          <div class="video_grid_item">
+            <video class="grid-video training" autoplay muted loop playsinline height="25%">
+              <source src="./static/videos/video4.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+        <div class="column is-3">
+          <div class="video_grid_item">
+            <video class="grid-video training" autoplay muted loop playsinline height="25%">
+              <source src="./static/videos/video5.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+        <div class="column is-3">
+          <div class="video_grid_item">
+            <video class="grid-video training" autoplay muted loop playsinline height="25%">
+              <source src="./static/videos/video6.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+        <div class="column is-3">
+          <div class="video_grid_item">
+            <video class="grid-video training" autoplay muted loop playsinline height="25%">
+              <source src="./static/videos/video7.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+        <div class="column is-3">
+          <div class="video_grid_item">
+            <video class="grid-video training" autoplay muted loop playsinline height="25%">
+              <source src="./static/videos/video8.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+    For <b>imitation learning</b>, we benchmark behavioral cloning (BC) using different models as backbones and train them on the <a href="https://microsoft.github.io/MoCapAct/">MoCapAct</a> dataset, where BoT-Hard consistently outperforms both the MLP and transformer baselines. Remarkably, the gap with these architectures further increases on the unseen validation clips, demonstrating the generalization capabilities provided by the embodiment-aware inductive bias. The table below indicates "max / mean" returns obtained during training.
+    <div>
+      <center>
+        <img src="./static/images/bc_table.png" alt="teaser" class="teaser-image" style="width: 80%">
+      </center>
+    </div>
+    Additionally, we show how BoT scales better when increasing the number of parameters, as shown in the figure below. The plot shows the performance of the models on the traning and validation sets as a function of the number of trainable parameters. BoT-Hard outperforms the transformer baseline, showing a more stable performance as the number of parameters increases.
+    <div>
+      <center>
+        <img src="./static/images/scaling.jpg" alt="teaser" class="teaser-image" style="width: 80%">
+      </center>
+    </div>
+    <br> 
+    <p>
+    We evaluate BoT's <b>reinforcement learning</b> (RL) performance on four continuous control tasks trained in Isaac Gym. 
+    </p>
+    <div class="video_grid">
+      <div class="columns is-multiline">
+        <div class="column is-4">
+          <div class="video_grid_item_right" style="width: 88%">
+            <video class="grid-video training" autoplay muted loop playsinline>
+              <source src="./static/videos/a1.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+        <div class="column is-one-fifth">
+          <div class="video_grid_item">
+            <video class="grid-video training" autoplay muted loop playsinline height="25%">
+              <source src="./static/videos/run.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+        <div class="column is-one-fifth">
+          <div class="video_grid_item">
+            <video class="grid-video training" autoplay muted loop playsinline height="25%">
+              <source src="./static/videos/bob.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+        <div class="column is-one-fifth">
+          <div class="video_grid_item">
+            <video class="grid-video training" autoplay muted loop playsinline height="25%">
+              <source src="./static/videos/hill.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <p>
+    Our results show that BoT-Mix consistently outperforms both the MLP and vanilla transformer baselines in terms of sample efficiency and asymptotic performance, highlighting the efficacy of integrating body-induced biases into the policy network architecture. Meanwhile, BoT-Hard performs better than the vanilla transformer on simpler tasks (A1-Walk and Humanoid-Mod), but shows relatively inferior results in hard-exploration tasks (Humanoid-Board and Humanoid-Hill). 
+    </p>
+    <br>
+    <div>
+      <img src="./static/images/rl_plots.jpg" alt="teaser" class="teaser-image" style="width: 100%">
+    </div>
+    <br>
+    <p>
+    Given that the masked attention bottlenecks information propagation from distant body parts, BoT-Hard's strong constraints on information communication may hinder efficient RL exploration: In Humanoid-Board and Humanoid-Hill, it may be useful for information about sudden changes in ground conditions to be transmitted from the toes to the fingertips in the upstream layers. For such tasks, BoT-Mix strikes a good balance between funneling information through the embodiment graph and enabling global pooling at intermediate layers to ensure efficient exploration. In contrast, in A1-Walk or Humanoid-Mod, the environment's state changes more regularly, thus the strong body-induced bias can effectively reduce the search space, enabling faster learning with BoT-Hard.
+    </p>
+    
+    <hr>
+    <div class="columns is-centered">
+      <div class="column">
+        <h2 class="title is-3">Computational Analysis</h2>
+      </div>
+    </div>
+    <p>
+    We devise a custom implementation of masked attention and compare it with the vanilla attention, showing how BoT-Hard is potentially 2x computationally more efficient than the vanilla transformer. The plots below show the time taken to process a sample as a function of the number of nodes in the graph, as well as the number of FLOPs required to do so.
+    </p>
+    <br>
+    <div style="display:flex">
+        <div>
+        <img src="./static/images/runtime.jpg" alt="teaser" class="teaser-image" style="width: 95%">
+        </div>
+        &nbsp;
+        <div>
+        <img src="./static/images/flops.jpg" alt="teaser" class="teaser-image" style="width: 95%">
+        </div>
+    </div>
+
+  </div>
+
+</section>
+
+</body>
+</html>
