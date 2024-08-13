@@ -105,6 +105,48 @@
         <div class="column has-text-centered">
           <h1 class="title is-2 publication-title">Body Transformer: Leveraging <br> Robot Embodiment for Policy Learning</h1>
 
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://sferrazza.cc/" target="_blank">Carmelo Sferrazza</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://bransthre.github.io/" target="_blank">Dun-Ming Huang</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://fangchenliu.github.io" target="_blank">Fangchen Liu</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://www.jmlee.kr" target="_blank">Jongmin Lee</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://people.eecs.berkeley.edu/~pabbeel/" target="_blank">Pieter Abbeel</a>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">University of California Berkeley</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2408.06316" target="_blank" class="button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/carlosferrazza/BodyTransformer" target="_blank" class="button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                </a>
+              </span>
+            </div>
+          </div>
           
         </div>
       </div>
@@ -237,6 +279,40 @@
         <img src="./static/images/scaling.jpg" alt="teaser" class="teaser-image" style="width: 80%">
       </center>
     </div>
+    In a dexterous manipulation scenario, BoT-Hard also outperforms baselines in a low-data imitation learning setting, being at least as demo-efficient as the MLP baseline, and consistently outperforming the transformer baseline. The figure below shows the performance as a function of the number of demonstrations.
+    <br>
+    <br>
+    <div class="video_grid">
+      <div class="columns is-multiline is-centered">
+        <div class="column is-one-fifth">
+          <div class="video_grid_item" style="width: 110%">
+            <video class="grid-video training" autoplay muted loop playsinline width="25%">
+              <source src="./static/videos/door.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+        <div class="column is-one-fifth">
+          <div class="video_grid_item" style="width: 110%">
+            <video class="grid-video training" autoplay muted loop playsinline height="25%">
+              <source src="./static/videos/hammer.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+        <div class="column is-one-fifth">
+          <div class="video_grid_item" style="width: 110%">
+            <video class="grid-video training" autoplay muted loop playsinline height="25%">
+              <source src="./static/videos/relocate.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <center>
+        <img src="./static/images/adroit.jpg" alt="teaser" class="teaser-image" style="width: 100%">
+      </center>
+    </div>
+    <br>
     <br> 
     <p>
     We evaluate BoT's <b>reinforcement learning</b> (RL) performance on four continuous control tasks trained in Isaac Gym. 
@@ -244,28 +320,28 @@
     <div class="video_grid">
       <div class="columns is-multiline">
         <div class="column is-4">
-          <div class="video_grid_item_right" style="width: 88%">
+          <div class="video_grid_item_right" style="width: 95%">
             <video class="grid-video training" autoplay muted loop playsinline>
               <source src="./static/videos/a1.mp4" type="video/mp4">
             </video>
           </div>
         </div>
-        <div class="column is-one-fifth">
-          <div class="video_grid_item">
-            <video class="grid-video training" autoplay muted loop playsinline height="25%">
+        <div class="column is-one-fourth">
+          <div class="video_grid_item" style="width: 95%">
+            <video class="grid-video training" autoplay muted loop playsinline width="25%">
               <source src="./static/videos/run.mp4" type="video/mp4">
             </video>
           </div>
         </div>
-        <div class="column is-one-fifth">
-          <div class="video_grid_item">
+        <div class="column is-one-fourth">
+          <div class="video_grid_item" style="width: 95%">
             <video class="grid-video training" autoplay muted loop playsinline height="25%">
               <source src="./static/videos/bob.mp4" type="video/mp4">
             </video>
           </div>
         </div>
-        <div class="column is-one-fifth">
-          <div class="video_grid_item">
+        <div class="column is-one-fourth">
+          <div class="video_grid_item" style="width: 95%">
             <video class="grid-video training" autoplay muted loop playsinline height="25%">
               <source src="./static/videos/hill.mp4" type="video/mp4">
             </video>
